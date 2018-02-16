@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
 
     @Column(name = "name")
