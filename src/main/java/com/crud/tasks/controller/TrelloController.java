@@ -19,18 +19,18 @@ public class TrelloController {
     private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public Optional<TrelloBoardDto> getTrelloBoards() {
-        return Optional.ofNullable(trelloClient.getTrelloBoards())
-                .filter(board -> board.contains("Kodilla"))
-                .ifPresent(????);
+    public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloClient.getTrelloBoards()
+                .stream()
+                .filter(board -> board.getId() != null)
+                .filter(board -> board.getName() != null)
+                .filter(board -> board.getName().contains("Kodilla"))
+                .collect(Collectors.toList());
     }
-
-//    public List<TrelloBoardDto> getTrelloBoards() {
-//        return trelloClient.getTrelloBoards()
-//                .stream()
-//                .filter(board -> board.getId() != null)
-//                .filter(board -> board.getName() != null)
-//                .filter(board -> board.getName().contains("Kodilla"))
-//                .collect(Collectors.toList());
+//     public Optional<TrelloBoardDto> getTrelloBoards() {
+//        return Optional.ofNullable(trelloClient.getTrelloBoards())
+//                .filter(board -> board.contains("Kodilla"))
+//                .ifPresent(????);
 //    }
+
 }
