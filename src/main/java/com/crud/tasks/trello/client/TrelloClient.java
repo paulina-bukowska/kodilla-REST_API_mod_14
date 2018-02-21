@@ -12,6 +12,9 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import static java.util.Optional.ofNullable;
 
 @Component
 public class TrelloClient {
@@ -30,7 +33,7 @@ public class TrelloClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    private URI getUrl() {
+    private URI url() {
         URI url = UriComponentsBuilder.fromHttpUrl(trelloEndpoint + "/members/" + trelloUsername + "/boards")
                 .queryParam("key", trelloKey)
                 .queryParam("token", trelloToken)
@@ -41,12 +44,8 @@ public class TrelloClient {
     }
 
     public List<TrelloBoardDto> getTrelloBoards() {
-        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(getUrl(), TrelloBoardDto[].class);
-
-        if (boardsResponse != null) {
-            return Arrays.asList(boardsResponse);
-        }
-        return new ArrayList<>();
+        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url(), TrelloBoardDto[].class);
+        return Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
     }
 
     public CreatedTrelloCard createNewCard(TrelloCardDto trelloCardDto) {
@@ -58,7 +57,6 @@ public class TrelloClient {
                 .queryParam("pos", trelloCardDto.getPos())
                 .queryParam("idList", trelloCardDto.getListId())
                 .build().encode().toUri();
-
         return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
     }
 }

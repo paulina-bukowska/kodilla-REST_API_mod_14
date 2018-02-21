@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.Optional.ofNullable;
 
 @RestController
 @RequestMapping("/v1/trello")
@@ -40,18 +45,22 @@ public class TrelloController {
         return trelloClient.createNewCard(trelloCardDto);
     }
 
-//        public List<TrelloBoardDto> getTrelloBoards() {
-//        return trelloClient.getTrelloBoards()
-//                .stream()
-//                .filter(board -> board.getId() != null)
-//                .filter(board -> board.getName() != null)
-//                .filter(board -> board.getName().contains("Kodilla"))
-//                .collect(Collectors.toList());
-//    }
-//     public Optional<TrelloBoardDto> getTrelloBoards() {
-//        return Optional.ofNullable(trelloClient.getTrelloBoards())
-//                .filter(board -> board.contains("Kodilla"))
-//                .ifPresent(????);
-//    }
+    //zad. 18.2 podpunkt 3.
+    public List<TrelloBoardDto> getTrelloKodillaBoards() {
+        return trelloClient.getTrelloBoards()
+                .stream()
+                .filter(board -> board.getId() != null)
+                .filter(board -> board.getName() != null)
+                .filter(board -> board.getName().contains("Kodilla"))
+                .collect(Collectors.toList());
+    }
 
+    //zad. 18.2 podpunkt 4.
+    public Optional<List<TrelloBoardDto>> getTrelloKodillaBoardsEnsureNoNull() {
+        List<TrelloBoardDto> boards = trelloClient.getTrelloBoards()
+                .stream()
+                .filter(board -> board.getName().contains("Kodilla"))
+                .collect(Collectors.toList());
+        return Optional.of(boards);
+    }
 }
