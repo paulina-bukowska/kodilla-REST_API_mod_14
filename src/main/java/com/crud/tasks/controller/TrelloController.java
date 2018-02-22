@@ -26,18 +26,8 @@ public class TrelloController {
     private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.forEach(trelloBoardDto -> {
-
-            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
-
-            System.out.println("This board contains lists: ");
-
-            trelloBoardDto.getLists().forEach(trelloList ->
-                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
-        });
+    public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloClient.getTrelloBoards();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
@@ -56,7 +46,7 @@ public class TrelloController {
     }
 
     //zad. 18.2 podpunkt 4.
-    public Optional<List<TrelloBoardDto>> getTrelloKodillaBoardsEnsureNoNull() {
+    public Optional<List<TrelloBoardDto>> getTrelloKodillaBoardsUsingOptional() {
         List<TrelloBoardDto> boards = trelloClient.getTrelloBoards()
                 .stream()
                 .filter(board -> board.getName().contains("Kodilla"))
