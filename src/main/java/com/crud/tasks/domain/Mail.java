@@ -14,17 +14,9 @@ public class Mail {
     private String message;
     private String toCc;
 
-    public Optional getToCc() {
-        return Optional.ofNullable(toCc);
-    }
-
-    @Override
-    public String toString() {
-        return "Mail{" +
-                "mailTo='" + mailTo + '\'' +
-                ", subject='" + subject + '\'' +
-                ", message='" + message + '\'' +
-                ", toCc='" + Optional.ofNullable(toCc).orElse("") + '\'' +
-                '}';
+    public Mail(String mailTo, String subject, String message) {
+        this.mailTo = mailTo;
+        this.subject = subject;
+        this.message = message;
     }
 }
