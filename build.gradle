@@ -16,7 +16,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
-//dla Heroku zakomentować 'war'
+//dla Heroku zakomentować 'war', ponieważ pakietowanie jest w 'jar'
 apply plugin: 'war'
 
 group = 'com.crud'

@@ -6,9 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
+//chcąc korzystać z ZEWNĘTRZNEGO serwera Tomcat musimy rozszerzyć klasę o SpringBootServletInitializer
+//oraz nadpisać metodę configure()
 public class TasksApplication extends SpringBootServletInitializer {
-	//dla Heroku bez rozszerzania klasy i nadpisywania metody configure()
-	//public class TasksApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
