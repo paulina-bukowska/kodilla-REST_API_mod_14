@@ -1,18 +1,16 @@
 package com.crud.tasks.service;
 
-        import com.crud.tasks.domain.Mail;
-        import org.junit.Assert;
-        import org.junit.Test;
-        import org.junit.runner.RunWith;
-        import org.mockito.InjectMocks;
-        import org.mockito.Mock;
-        import static org.mockito.Mockito.times;
-        import static org.mockito.Mockito.verify;
-        import org.mockito.junit.MockitoJUnitRunner;
-        import org.springframework.mail.SimpleMailMessage;
-        import org.springframework.mail.javamail.JavaMailSender;
-
-        import static org.junit.Assert.*;
+import com.crud.tasks.domain.Mail;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleEmailServiceTest {

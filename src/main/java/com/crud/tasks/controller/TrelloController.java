@@ -1,20 +1,17 @@
 package com.crud.tasks.controller;
 
-import com.crud.tasks.domain.CreatedTrelloCard;
+import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.service.TrelloService;
 import com.crud.tasks.trello.client.TrelloClient;
+import com.crud.tasks.trello.facade.TrelloFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static java.util.Optional.ofNullable;
 
 @CrossOrigin("*")
 @RestController
@@ -22,20 +19,23 @@ import static java.util.Optional.ofNullable;
 public class TrelloController {
 
     @Autowired
-    private TrelloClient trelloClient;
-
-    @Autowired
-    private TrelloService trelloService;
+    private TrelloFacade trelloFacade;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getTrelloBoards")
     public List<TrelloBoardDto> getTrelloBoards() {
-        return trelloService.fetchTrelloBoards();
+        return trelloFacade.fetchTrelloBoards();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createTrelloCard")
-    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-        return trelloService.createTrelloCard(trelloCardDto);
+    public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
+        return trelloFacade.createCard(trelloCardDto);
     }
+
+
+
+    //na potrzeby zad. 18
+    @Autowired
+    private TrelloClient trelloClient;
 
     //zad. 18.2 podpunkt 3.
     public List<TrelloBoardDto> getTrelloKodillaBoards() {
