@@ -10,6 +10,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static javafx.scene.input.KeyCode.L;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -31,7 +33,7 @@ public class TaskMapperTestSuite {
         assertEquals("Test_title", returnedTask.getTitle());
         assertEquals("Test_content", returnedTask.getContent());
         assertNotNull(returnedTask.getId());
-//        assertEquals(10L, returnedTask.getId());
+        assertEquals(new Long(10L), new Long(returnedTask.getId()));
     }
 
     @Test
@@ -46,6 +48,7 @@ public class TaskMapperTestSuite {
         assertEquals("Test_title", returnedTaskDto.getTitle());
         assertEquals("Test_content", returnedTaskDto.getContent());
         assertNotNull(returnedTaskDto.getId());
+        assertEquals(new Long(5L), new Long(returnedTaskDto.getId()));
     }
 
     @Test
@@ -63,5 +66,6 @@ public class TaskMapperTestSuite {
         assertEquals(3, taskListDto.size());
         assertEquals("Test_title2", taskListDto.get(1).getTitle());
         assertEquals("Test_content3", taskListDto.get(2).getContent());
+        assertEquals(new Long(1L), new Long(taskListDto.get(0).getId()));
     }
 }
