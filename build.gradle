@@ -36,7 +36,10 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-starter-mail:1.5.10.RELEASE')
 
-	//Heroku
+	//transformowanie obiektu na JSON
+	compile('com.google.code.gson:gson:2.8.2')
+
+	//dla Heroku
 //	compile('org.postgresql:postgresql')
 
 	//Swagger

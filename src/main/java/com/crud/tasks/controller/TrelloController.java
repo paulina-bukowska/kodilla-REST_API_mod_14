@@ -33,26 +33,26 @@ public class TrelloController {
 
 
 
-    //na potrzeby zad. 18
-    @Autowired
-    private TrelloClient trelloClient;
-
-    //zad. 18.2 podpunkt 3.
-    public List<TrelloBoardDto> getTrelloKodillaBoards() {
-        return trelloClient.getTrelloBoards()
-                .stream()
-                .filter(board -> board.getId() != null)
-                .filter(board -> board.getName() != null)
-                .filter(board -> board.getName().contains("Kodilla"))
-                .collect(Collectors.toList());
-    }
-
-    //zad. 18.2 podpunkt 4.
-    public Optional<List<TrelloBoardDto>> getTrelloKodillaBoardsUsingOptional() {
-        List<TrelloBoardDto> boards = trelloClient.getTrelloBoards()
-                .stream()
-                .filter(board -> board.getName().contains("Kodilla"))
-                .collect(Collectors.toList());
-        return Optional.of(boards);
-    }
+//    //na potrzeby zad. 18
+//    @Autowired
+//    private TrelloClient trelloClient;
+//
+//    //zad. 18.2 podpunkt 3.
+//    public List<TrelloBoardDto> getTrelloKodillaBoards() {
+//        return trelloClient.getTrelloBoards()
+//                .stream()
+//                .filter(board -> board.getId() != null)
+//                .filter(board -> board.getName() != null)
+//                .filter(board -> board.getName().contains("Kodilla"))
+//                .collect(Collectors.toList());
+//    }
+//
+//    //zad. 18.2 podpunkt 4.
+//    public Optional<List<TrelloBoardDto>> getTrelloKodillaBoardsUsingOptional() {
+//        List<TrelloBoardDto> boards = trelloClient.getTrelloBoards()
+//                .stream()
+//                .filter(board -> board.getName().contains("Kodilla"))
+//                .collect(Collectors.toList());
+//        return Optional.of(boards);
+//    }
 }
