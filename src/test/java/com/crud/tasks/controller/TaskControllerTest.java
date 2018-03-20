@@ -46,30 +46,23 @@ public class TaskControllerTest {
         when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
 
         //When & Then
-        try {
             mockMvc.perform(get("/v1/task/getTask").contentType(MediaType.APPLICATION_JSON).param("taskId", "13"))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.id", is(13)))
                     .andExpect(jsonPath("$.title", is("Test_title")))
                     .andExpect(jsonPath("$.content", is("Test_content")));
-        } catch (TaskNotFoundException e) {
-        }
     }
 
-//    @Test(expected = TaskNotFoundException.class)
-//    public void shouldThrowException() throws Exception {
-//        // Given
-//        Long id = 13L;
-//        TaskDto taskDto = new TaskDto(13L, "Test_title", "Test_content");
-//        Task task = new Task(13L, "Test_title", "Test_content");
-//        TaskNotFoundException error = new TaskNotFoundException();
-//
-//        when(service.getTask(id)).thenReturn(error);
-//        when(taskMapper.mapToTaskDto(task)).thenReturn(error);
-//
-//        // When & Then
-//        mockMvc.perform(get("/v1/task/getTask").contentType(MediaType.APPLICATION_JSON).param("taskId", "14"));
-//    }
+    @Test(expected = Exception.class)
+    public void shouldThrowException() throws Exception {
+        // Given
+        Long id = 14L;
+
+        when(service.getTask(id)).thenThrow(new Exception());
+
+        // When & Then
+        mockMvc.perform(get("/v1/task/getTask").contentType(MediaType.APPLICATION_JSON).param("taskId", "14"));
+    }
 
     @Test
     public void shouldFetchTaskList() throws Exception {
@@ -132,7 +125,8 @@ public class TaskControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(9)))
                 .andExpect(jsonPath("$.title", is("Update_title")))
-                .andExpect(jsonPath("$.content", is("Update_content")));
+                .andExpect(jsonPath("$.content", is("Update_content")))
+;
     }
 
     @Test
