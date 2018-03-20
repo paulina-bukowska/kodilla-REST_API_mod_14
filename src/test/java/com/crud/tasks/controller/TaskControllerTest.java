@@ -58,7 +58,7 @@ public class TaskControllerTest {
         // Given
         Long id = 14L;
 
-        when(service.getTask(id)).thenThrow(new Exception());
+        when(service.getTask(id)).thenThrow(new TaskNotFoundException());
 
         // When & Then
         mockMvc.perform(get("/v1/task/getTask").contentType(MediaType.APPLICATION_JSON).param("taskId", "14"));
