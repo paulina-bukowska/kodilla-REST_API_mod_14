@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 // "opakowania" na metody z TaskRepository
+// warstwa dostępu do bazy danych
+// związana z zapytaniami
 @Service
 public class DbService {
     @Autowired

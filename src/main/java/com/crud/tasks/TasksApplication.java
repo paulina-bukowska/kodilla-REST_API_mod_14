@@ -8,14 +8,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 //chcąc korzystać z ZEWNĘTRZNEGO serwera Tomcat musimy rozszerzyć klasę o SpringBootServletInitializer
 //oraz nadpisać metodę configure()
-public class TasksApplication extends SpringBootServletInitializer {
+public class TasksApplication
+//		extends SpringBootServletInitializer
+{
 
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(TasksApplication.class);
-	}
+//	@Override
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(TasksApplication.class);
+//	}
 }

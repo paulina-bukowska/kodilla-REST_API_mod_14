@@ -11,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity(name = "tasks")
+//to co w bazie danych
 public class Task {
     @Id
     @GeneratedValue

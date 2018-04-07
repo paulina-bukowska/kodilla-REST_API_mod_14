@@ -5,6 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
+//warstwa dostępu do bazy danych
+// SpringDATA
+
 public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
     List<Task> findAll();

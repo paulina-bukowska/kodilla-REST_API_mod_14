@@ -13,6 +13,7 @@ import java.util.List;
 import static java.util.Optional.ofNullable;
 
 @Service
+// wykonuje konkretne zadania biznesowe
 public class TrelloService {
 
     private static final String SUBJECT = "Tasks: New Trello card";

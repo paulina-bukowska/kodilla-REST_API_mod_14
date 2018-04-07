@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
-
+// umozliwia metodzie ajax na synchronizację różnych domen
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/v1/task")
+// związane z RESTem
+// tu wstrzykujemy SERVICE
 public class TaskController {
     @Autowired
     private DbService service;
