@@ -36,6 +36,7 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-starter-mail:1.5.10.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
 	//transformowanie obiektu na JSON
 	compile('com.google.code.gson:gson:2.8.2')
@@ -46,7 +47,6 @@ dependencies {
 	//Swagger
 	compile('io.springfox:springfox-swagger2:2.7.0')
 	compile('io.springfox:springfox-swagger-ui:2.7.0')
-	compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 

@@ -13,8 +13,16 @@
     <br>
 
     <!--/*@thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="firstOperation" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="secondOperation" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <!--/*@thymesVar id="thirdOperation" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+    <span th:text="${firstOperation}"></span>
     <span th:text="${two} * ${two}"></span>
+    <br>
+    <span th:text="${secondOperation}"></span>
     <span th:text="${two} * ${two} + ${two}"></span>
+    <br>
+    <span th:text="${thirdOperation}"></span>
     <span th:text="${two} - ${two} * ${two}"></span>
 </body>
 </html>
