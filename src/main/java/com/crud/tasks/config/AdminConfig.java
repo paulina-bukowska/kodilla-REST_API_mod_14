@@ -14,6 +14,20 @@ public class AdminConfig {
     @Value("${admin.name}")
     private String adminName;
 
-    @Value("${info.company.name}" + "${info.company.goal}" + "${info.company.email}" + "${info.company.phone}")
-    private String companyDetails;
+    @Value("${info.company.name}")
+    private String companyName;
+
+    @Value("${info.company.goal}")
+    private String companyGoal;
+
+    @Value("${info.company.email}")
+    private String companyEmail;
+
+    @Value("${info.company.phone}")
+    private String companyPhone;
+
+    public String getCompanyDetails() {
+        return "company: " + this.companyName + "  ************ phone: " + this.companyPhone + "  ************ email: " + this.companyEmail
+                + "\n" + "  ********* " + this.companyGoal + "  *********";
+    }
 }
